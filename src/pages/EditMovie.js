@@ -6,11 +6,23 @@ import * as movieAPI from '../services/movieAPI';
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      shouldRedirect: false,
+      status: 'loading',
+      movie: [],
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    movieAPI.getMovie(this.props.match.params.id)
+      .then((dados) => this.setState({
+        movie: dados,
+      }));
+  }
+
   handleSubmit(updatedMovie) {
+    
   }
 
   render() {

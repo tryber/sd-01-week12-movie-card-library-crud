@@ -51,7 +51,7 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
-              <Link to={`${this.props.match.params.id}/edit`}>Editar</Link>
+              <Link to={`/movies/${this.props.match.params.id}/edit`}>Editar</Link>
               <Link to="/">Voltar</Link>
             </div>
           </div>
