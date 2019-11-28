@@ -52,7 +52,7 @@ O componente `Switch` deve ser o único filho direto de `BrowserRouter`. Dentro 
 
 O app possui ao todo 4 rotas, como descrito na seção [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido). Cada rota é associada a um caminho de URL e a um componente. Este componente renderizará um conteúdo específico para aquela rota. O mapeamento entre rotas, caminhos de URL e componentes estão listados abaixo.
 
-1. A caminho raiz do projeto (`/`) deve renderizar o componente `MovieList`.
+1. O caminho raiz do projeto (`/`) deve renderizar o componente `MovieList`.
 
 2. O caminho `movies/:id` deve renderizar o componente `MovieDetails`. Onde o `:id` é o parâmetro da URL que representa ID do filme que `MovieDetails` renderizará.
 
@@ -161,7 +161,7 @@ export default App;
 
 5. Adicione as mudanças ao _stage_ do Git e faça um `commit`
   * Verifique que as mudanças ainda não estão no _stage_
-    * Exemplo: `git status` (deve aparecer listado o arquivo _src/components/MovieList.jsx_ em vermelho)
+    * Exemplo: `git status` (deve aparecer listado o arquivo _src/App.js_ em vermelho)
   * Adicione o arquivo alterado ao _stage_ do Git
       * Exemplo:
         * `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
