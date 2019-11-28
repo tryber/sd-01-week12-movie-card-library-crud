@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import Switch from './components/Switch';
 import './App.css';
 
 export default class App extends Component {
@@ -12,9 +13,9 @@ export default class App extends Component {
   render() {
     return (
 
-    <Router>
-      <div>Movie Card Library CRUD</div>
-    </Router>
+    <BrowserRouter>
+      <Switch />
+    </BrowserRouter>
       
     );
   }
