@@ -1,17 +1,6 @@
 import React from 'react';
 
 class MovieForm extends React.Component {
-  static newState() {
-    return {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
-  }
-
   constructor(props) {
     super(props);
     this.state = { ...props.movie };
