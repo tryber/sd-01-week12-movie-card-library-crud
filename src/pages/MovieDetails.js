@@ -24,6 +24,7 @@ class MovieDetails extends Component {
   render() {
     const { movie, loading } = this.state;
     console.log(movie);
+    console.log(this.props);
     // Change the condition to check the state
     if (loading) return <Loading />;
 
