@@ -1,4 +1,4 @@
-# Boas vindas ao repositório do projeto de Movie Cards Library CRUD!
+# Boas vindas ao repositório do projeto de Movie Cards CRUD!
 
 Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
 
@@ -6,21 +6,115 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ## O que deverá ser desenvolvido
 
+Dando continuidade aos últimos projetos, você criará um [_CRUD_](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) de cartões de filmes em React. Como todo _CRUD_, em seu app deverá ser possível:
+
+  - Listar todos os filmes cadastrados, com informações resumidas sobre cada filme;
+  - Exibir informações detalhadas de um filme selecionado; 
+  - Adicionar um novo filme à lista;
+  - Editar um filme da lista;
+  - E apagar um filme da lista.
+
+Nos últimos projetos, por mais que o app tenha sido desenvolvido utilizando múltiplos componentes, o que é uma boa prática, todas as funcionalidades eram acessadas ao mesmo tempo, no mesmo lugar, utilizando apenas uma URL (`localhost:3000`, normalmente). Na mesma página onde havia a listagem de filmes, havia um formulário pra criar um novo filme, por exemplo. À medida que seus apps se tornarem maiores e mais complexos, isso se tornará inviável. Desta vez, as funcionalidades do app serão agrupadas e organizadas em rotas.
+
+Uma rota define o que deve ser renderizado na página ao abri-la. Cada rota está associada a um caminho. O caminho é a parte da URL após o domínio (nome do site, de forma simplificada). Por exemplo, em `www.example.com/foo/bar`, o caminho é `/foo/bar`. Até agora, todos os apps React que você desenvolveu possuiam somente uma rota, a raiz (`/`). 
+
+Este app terá 4 rotas:
+
+1. A rota raiz (index), no caminho `/`. Esta rota exibirá uma lista com todos os filmes cadastrados. Essa lista contém informações resumidas sobre cada filme.
+
+2. Uma rota para mostrar informações detalhadas de um filme, no caminho `/movies/:id`. Onde o `:id` é o parâmetro da URL que representa id do filme exibido. Por exemplo, ao entrar no caminho `/movies/5`, serão exibidas informações sobre o filme com id 5. 
+
+3. Uma rota para criar novos filmes, no caminho `/movies/new`. Essa rota renderizará um formulário para adicionar um novo filme.
+
+4. Uma rota para editar um filme, no caminho `/movies/:id/edit`. Analogamente à rota 2, `:id` é o id do filme a ser editado. Essa rota renderizará um formulário idêntico ao da rota 3. Nesse caso, porém, o formulário virá preenchido com as informações do filme a ser editado. Ao submeter o formulário, ao invés de criar um novo filme, o filme em questão terá seus dados atualizados.
+
+Relacionado a cada rota haverá um componente React responsável por renderizar seu conteúdo. Esse mapeamento entre o caminho da URL, rota e componente será feito pelo `React Router`, a principal biblioteca de roteamento em `React`.
+
+Naturalmente, haverá links de navegação e redirecionamento entre as diferentes rotas. Por exemplo, na rota 1, haverá, para cada filme, um link para a rota 2, onde se poderá ver informações detalhadas sobre o filme escolhido. Na rota 2, haverá um link para a rota 4, a fim de se editar informações do filme. Ao submeter o formulário, o app automaticamente será levado de volta à rota 2, mostrando as informações atualizadas do filme. Tudo isso será feito utilizando os componentes da biblioteca `React Router`.
+
+Outra diferença importante neste projeto em relação aos anteriores é que os dados virão de uma API (simulada) e não mais de um arquivo estático. Você utilizará essa API para ler, criar, atualizar e apagar filmes. Logo, você terá que lidar com requisições assíncronas e _promises_. Também deverá fazer uso de _lifecycle methods_ e de estados para controlar o que é renderizado por seus componentes a depender de em que momento as requisições se encontram.
+
 ## Desenvolvimento
 
-### Componentes
-
-### Estado de componentes
-
-## Testes
-
-#### Dica: watch mode
-
-Ao executar os testes localmente, [Jest](https://jestjs.io/), a ferramenta que executa os testes, entra em _watch mode_. Nesse modo, a cada vez que um arquivo é salvo, os testes são executados novamente. Isso pode aumentar sua produtividade removendo a necessidade de executar os testes manualmente o tempo todo. Você pode abrir uma aba no seu terminal ou no terminal do _VSCode_ e deixar o _Jest_ rodando nesse modo.
+Este repositório já contém um _template_ com um App React criado e configurado. Após clonar o projeto e instalar as dependências (mais sobre isso abaixo), você não precisará realizar nenhuma configuração adicional. Todos os componentes estritamente necessários para finalizar o projeto já estão criados, mas você pode adicionar outros se julgar necessário. Você deverá complementar estes componentes de forma a satisfazer os requisitos listados na próxima seção.
 
 ## Requisitos do projeto
 
-⚠️ Lembre-se que o seu projeto só será avaliado se estiver passando por **todos os _checks_** do **CodeClimate**. Use o _check_ do **TravisCI** para medir o seu progresso em relação aos requisitos! 😉
+### 1 - O componente `App` deve renderizar `BrowserRouter`
+
+O componente `App`, que representa toda a aplicação, deve importar e renderizar `BrowserRouter`. 
+
+### 2 - O componente `BrowserRouter` deve renderizar `Switch`
+
+O componente `Switch` deve ser o único filho direto de `BrowserRouter`. Dentro de `Switch` ficarão as rotas relacionadas às diferentes páginas da aplicação.
+
+### 3 - O componente `Switch` deve renderizar as 4 rotas do app
+
+O app possui ao todo 4 rotas, como descrito na seção [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido). Cada rota é associada a um caminho de URL e a um componente. Este componente renderizará um conteúdo específico para aquela rota. O mapeamento entre rotas, caminhos de URL e componentes estão listados abaixo.
+
+1. A caminho raiz do projeto (`/`) deve renderizar o componente `MovieList`.
+
+2. O caminho `movies/:id` deve renderizar o componente `MovieDetails`. Onde o `:id` é o parâmetro da URL que representa ID do filme que `MovieDetails` renderizará.
+
+3. O caminho `/movies/new` deve renderizar o componente `NewMovie`.
+
+4. O caminho `movies/:id/edit` deve renderizar o componente `EditMovie`. `:id` é um parâmetro de URL com o id do filme que `EditMovie` possibilitará editar.
+
+5. Qualquer outro caminho que não se enquadre nas rotas anteriores deve renderizar o componente `NotFound`.
+
+### 4 - Ao ser montado, `MovieList` deve fazer uma requisição para buscar a lista de filmes a ser renderizada
+
+Para buscar a lista, você deve utilizar a função `getMovies` importada do módulo `movieAPI` em `MovieList`. Essa função retorna uma _promise_. A requisição deve ser feita no momento em que o `MovieList` for montado no DOM. Enquanto a requisição estiver em curso, `MovieList` deve renderizar o componente `Loading`, como ilustrado na imagem a seguir.
+
+![image](loading.png)
+
+Uma vez que a requisição retornar, o resultado deve ser renderizado. Para cada filme, renderize um componente `MovieCard`, como ilustrado abaixo.
+
+![image](index.png)
+
+Você precisará adicionar um estado em `MovieList` para controlar o que será exibido.
+
+### 5 - `MovieCard` deve possuir um link para a página de detalhes de um filme
+
+Cada cartão da lista deve conter em seu rodapé um link com o texto "VER DETALHES". Este link deve apontar para a rota `movies/:id`, onde `:id` é o id do filme. Esta rota exibirá informações detalhadas de um filme.
+
+### 6 - Ao ser montado, `MovieDetails` deve fazer uma requisição para buscar o filme que deverá ser renderizado
+
+`MovieDetails` se comporta de forma muito semelhante ao `MovieList`. Ao ser montado, deve fazer uma requisição utilizando a função `getMovie` do módulo `movieAPI`, passando o id do filme. O componente `Loading` deve ser renderizado enquanto a requisição estiver em curso. Após terminar, deve-se renderizar o card com detalhes sobre o filme.
+
+### 7 - `MovieDetails` deve possuir um link para a página de edição de filmes.
+
+No rodapé do cartão, deve haver um link com o texto "EDITAR" apontando para a rota `/movies/:id/edit`, conforme ilustrado na imagem abaixo.
+
+![image](card-details.png)
+
+### 8 - `MovieDetails` deve possuir um link para voltar à pagina inicial
+
+No rodapé do cartão, deve haver um link apontando para a rota raiz (`/`) com o texto "VOLTAR", conforme ilustrado na imagem acima.
+
+### 9 - Ao ser montado, `EditMovie` deve realizar uma requisição para buscar o filme que será editado.
+
+O comportamento de `EditMovie` é muito semelhante ao de `MovieDetails`. `EditMovie`, no entando, renderizará o formulário de edição de filme.
+
+### 10 - Ao submeter o formulário, `EditMovie` deve atualizar o filme e redirecionar a página para a rota raiz.
+
+O componente `MovieForm` recebe uma callback, que será executada quando o formulário for submetido. Essa callback recebe os dados atualizados do filme. Neste momento, `EditMovie` deve fazer uma requisição utilizando a função `updateMovie` do módulo `movieAPI`, passando como argumentos os dados atualizados. Quando a requisição finalizar, `EditMovie` deve redirecionar o app para a rota raiz (`/`).
+
+### 11 - Na página inicial, deve haver um link para criar novos cartões.
+
+O link deve conter o texto "ADICIONAR CARTÃO" e apontar para a rota `/movies/new`, contento um formulário para criar novos cartões.
+
+### 12 - Ao submeter o formulário, `NewMovie` deve criar um novo filme e redirecionar o app para a página inicial.
+
+Utilizando a callback passada para `MovieForm`, `NewMovie` deve criar um novo cartão utilizando a função `createMovie` do módulo `movieAPI`. Após o fim da requisição, `NewMovie` deve redirecionar o app para a página inicial, contento o novo cartão.
+
+### 13 - Adicione proptypes a todos os componentes
+
+Todos os compontens que recebem _props_ devem ter suas _proptypes_ corretamente declaradas. O _eslint_ checa automaticamente declaração de _proptypes_, portanto seu _Pull Request_ deverá passar no _Code Climate_ para satisfazer esse requisito.
+
+### Bônus: Adicione um link para deletar um cartão em `MovieDetails`.
+
+Ao clicar neste link, faça uma requisição utilizando a função `deleteMovie` do módulo `movieAPI`. Após finalizar a requisição, redirecione o app para a página inicial. O cartão apagado não deverá mais se encontrar na lista.
 
 ---
 
@@ -29,17 +123,15 @@ Ao executar os testes localmente, [Jest](https://jestjs.io/), a ferramenta que e
 ### ANTES DE COMEÇAR A DESENVOLVER:
 
 1. Clone o repositório
-  * `git clone https://github.com/tryber/sd-01-week12-movie-card-library-crud.git`.
+  * `git clone git@github.com:tryber/sd-01-week12-movie-card-library-crud.git`.
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-01-week12-movie-card-library-crud`
+    * `cd sd-01-week11-movie-card-library-crud`
 
-2. Instale as dependências, inicialize o projeto e rode os testes
+2. Instale as dependências e inicialize o projeto
   * Instale as dependências:
     * `npm install`
   * Inicialize o projeto:
     * `npm start` (uma nova página deve abrir no seu navegador com um texto simples)
-  * Verifique que os testes estão executando:
-    * `npm test` (os testes devem rodar e falhar)
 
 3. Crie uma branch a partir da branch `master`
   * Verifique que você está na branch `master`
@@ -48,39 +140,28 @@ Ao executar os testes localmente, [Jest](https://jestjs.io/), a ferramenta que e
     * Exemplo: `git checkout master`
   * Agora, crie uma branch onde você vai guardar os `commits` do seu projeto
     * Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
-    * Exemplo: `git checkout -b joaozinho-movie-card-library-stateful`
+    * Exemplo: `git checkout -b joaozinho-movie-card-library-crud`
 
-4. Faça alterações em algum dos componentes que precisam de implementação, por exemplo o `MovieLibrary` em `src/components`:
+4. Faça alterações em algum dos componentes que precisam de implementação, por exemplo o `App` em `src/`:
 ```jsx
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import './App.css';
 
-import MovieList from './MovieList';
-import SearchBar from './SearchBar';
-import AddMovie from './AddMovie';
-
-class MovieLibrary extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div>
-        <h2> My awesome movie library </h2>
-        <SearchBar />
-        <MovieList movies={this.props.movies} />
-        <AddMovie />
-      </div>
-    );
-  }
+function App() {
+  return (
+    <Router>
+      <div>Movie Card Library CRUD</div>
+    </Router>
+  );
 }
 
-export default MovieLibrary;
+export default App;
 ```
 
 5. Adicione as mudanças ao _stage_ do Git e faça um `commit`
   * Verifique que as mudanças ainda não estão no _stage_
-    * Exemplo: `git status` (deve aparecer listado o arquivo _src/components/MovieLibrary.jsx_ em vermelho)
+    * Exemplo: `git status` (deve aparecer listado o arquivo _src/components/MovieList.jsx_ em vermelho)
   * Adicione o arquivo alterado ao _stage_ do Git
       * Exemplo:
         * `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
@@ -91,7 +172,7 @@ export default MovieLibrary;
         * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
 
 6. Adicione a sua branch com o novo `commit` ao repositório remoto
-  * Usando o exemplo anterior: `git push -u origin joaozinho-movie-cards-library-stateful`
+  * Usando o exemplo anterior: `git push -u origin joaozinho-movie-cards-library-crud`
 
 7. Crie um novo `Pull Request` _(PR)_
   * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-01-week12-movie-card-library-crud/pulls)
