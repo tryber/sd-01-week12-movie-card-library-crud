@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import * as movieAPI from '../services/movieAPI';
+import { Link } from 'react-router-dom';
 import { Loading } from '../components';
+import * as movieAPI from '../services/movieAPI';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -50,6 +51,8 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
+              <Link to={`${this.props.match.params.id}/edit`}>Editar</Link>
+              <Link to="/">Voltar</Link>
             </div>
           </div>
         </div>
