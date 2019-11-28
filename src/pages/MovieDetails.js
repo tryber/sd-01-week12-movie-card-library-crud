@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -8,18 +7,24 @@ class MovieDetails extends Component {
     super(props);
 
     this.state = {
-      movie: [],
+      movie: '',
+      loading: true,
     };
   }
 
   componentDidMount() {
-    this.setState((state) => (
-      { movie: [...state.movie, this.props.value] }));
+    movieAPI.getMovie(this.props.match.params.id)
+      .then((dados) => this.setState({
+        movie: dados,
+        loading: false,
+      }));
   }
 
   render() {
+    const { movie, loading } = this.state;
+    console.log(movie);
     // Change the condition to check the state
-    if (this.state.movie.length === 0) return <Loading />;
+    if (loading) return <Loading />;
 
     const {
       title,
@@ -28,7 +33,7 @@ class MovieDetails extends Component {
       genre,
       rating,
       subtitle,
-    } = this.state.movie;
+    } = movie;
 
     return (
       <div className="row">
