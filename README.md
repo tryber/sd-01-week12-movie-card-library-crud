@@ -125,7 +125,7 @@ Ao clicar neste link, faça uma requisição utilizando a função `deleteMovie`
 1. Clone o repositório
   * `git clone git@github.com:tryber/sd-01-week12-movie-card-library-crud.git`.
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-01-week11-movie-card-library-crud`
+    * `cd sd-01-week12-movie-card-library-crud`
 
 2. Instale as dependências e inicialize o projeto
   * Instale as dependências:
@@ -165,7 +165,7 @@ export default App;
   * Adicione o arquivo alterado ao _stage_ do Git
       * Exemplo:
         * `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
-        * `git status` (deve aparecer listado o arquivo _src/components/MovieLibrary.jsx_ em verde)
+        * `git status` (deve aparecer listado o arquivo _src/App.js_ em verde)
   * Faça o `commit` inicial
       * Exemplo:
         * `git commit -m 'iniciando o projeto. VAMOS COM TUDO :rocket:'` (fazendo o primeiro commit)
