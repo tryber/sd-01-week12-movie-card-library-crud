@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 
-function App() {
-  return (
-    <div>Movie Card Library CRUD</div>
-  );
-}
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
 
-export default App;
+  render() {
+    return (
+
+    <Router>
+      <div>Movie Card Library CRUD</div>
+    </Router>
+      
+    );
+  }
+}
