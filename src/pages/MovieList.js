@@ -26,14 +26,21 @@ class MovieList extends Component {
     const { movies, loading } = this.state;
     if (loading) return <Loading />;
 
-    // Render Loading here if the request is still happening
-
     return (
-      <div className='movie-list'>
-        {movies.map((movie) => (
-          <MovieCard key={movie.title} movie={movie} />
-        ))}
-        <Link to='/movies/new'>ADICIONAR CARTÃO</Link>
+      <div>
+        <header>
+          <h1 className='header'>Rotten Tomatoes</h1>
+        </header>
+        <div className='movie-list'>
+          {movies.map((movie) => (
+            <MovieCard key={movie.title} movie={movie} />
+          ))}
+        </div>
+        <footer>
+          <Link to='/movies/new' className='btn'>
+            ADICIONAR CARTÃO
+          </Link>
+        </footer>
       </div>
     );
   }

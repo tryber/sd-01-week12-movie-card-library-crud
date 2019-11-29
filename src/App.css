@@ -1,6 +1,44 @@
+.btn {
+  background: #b065d6;
+  border-radius: 26px;
+  border-top: 1px solid #bff797;
+  box-shadow: black 0 1px 0;
+  color: white;
+  display: flex;
+  font-size: 1.4em;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  max-width: 12em;
+  text-decoration: none;
+  text-shadow: black 0 1px 0;
+  vertical-align: middle;
+}
+
+.btn:active {
+  background: #1b435e;
+  border-top-color: #1b435e;
+}
+
+.btn:hover {
+  background: #672878;
+  border-top-color: #672878;
+  color: #ccc;
+}
+
 body {
-  background-color: whitesmoke;
+  background-color: white;
   box-sizing: border-box;
+}
+
+.header {
+  align-items: center;
+  color: rgb(233, 8, 8);
+  display: flex;
+  flex-direction: column;
+  font-family: Verdana, Tahoma, sans-serif;
+  font-style: oblique;
+  font-weight: 900;
+  text-shadow: 12px 12px 14px #a5a5a5;
 }
 
 .movie-list {
@@ -10,6 +48,11 @@ body {
 }
 
 .movie-card {
+  background-image: url('http://1.bp.blogspot.com/-zY8GWz0AUyY/VfQp4WshXPI/AAAAAAAAPVc/aBgiMFTFKPc/s1600/imgonline-com-ua-rainbowbackgrCvXRM1AvnZP0.jpg');
+  border-style: inset;
+  border-width: 7px;
+  border-color: rgb(95, 81, 81);
+  padding: 0 20px 20px;
   width: 500px;
 }
 
@@ -39,3 +82,4 @@ body {
 .card .card-content p {
   margin-bottom: 15px;
 }
+
