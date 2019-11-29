@@ -21,9 +21,7 @@ class MovieDetails extends Component {
     });
   }
   render() {
-    // Change the condition to check the state
     if (this.state.loading) return <Loading />;
-
     const {
       title,
       storyline,
@@ -32,7 +30,6 @@ class MovieDetails extends Component {
       rating,
       subtitle,
     } = this.state.movie;
-
     return (
       <div className="row">
         <div className="col s12 m7">
@@ -59,5 +56,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: {
+      id: PropTypes.number,
+    },
+  }).isRequired,
+};
 
 export default MovieDetails;
