@@ -40,18 +40,19 @@ class MovieDetails extends Component {
     return (
       <div className="row">
         <div className="col s12 m7">
-          <div className="card" />
-          <FormComponent movie={movie} id={id} />
-          <div className="card-action">
-            <Link to={`/movies/${id}/edit`}>
-            EDITAR
-            </Link>
-            <Link to="/">
-            VOLTAR
-            </Link>
-            <Link to={{ state: { movie } }} onClick={this.byebyeMovie}>
-            DELETAR CARTÃO
-            </Link>
+          <div className="card">
+            <FormComponent movie={movie} id={id} />
+            <div className="card-action">
+              <Link to={`/movies/${id}/edit`}>
+              EDITAR
+              </Link>
+              <Link to="/">
+              VOLTAR
+              </Link>
+              <Link to={{ state: { movie } }} onClick={this.byebyeMovie}>
+              DELETAR CARTÃO
+              </Link>
+            </div>
           </div>
         </div>
       </div>
