@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -10,7 +10,9 @@ class MovieDetails extends Component {
     this.state = {
       loading: true,
       movie: [],
+      redirect: false,
     };
+    this.deletingMovie = this.deletingMovie.bind(this);
   }
 
   componentDidMount() {
@@ -21,27 +23,34 @@ class MovieDetails extends Component {
       });
     });
   }
+
+  deletingMovie(movieId) {
+    movieAPI.deleteMovie(movieId)
+    .then(this.setState({redirect: true}));
+  }
   render() {
     if (this.state.loading) return <Loading />;
+    if (this.state.redirect) return <Redirect to="/" />
     return (
       <div className="row">
         <div className="col s12 m7">
           <div className="card">
             <div className="card-image">
-              <img alt="Movie Cover" src={`../${this.state.imagePath}`} />
-              <span className="card-title">{this.state.title}</span>
+              <img alt="Movie Cover" src={`../${this.state.movie.imagePath}`} />
+              <span className="card-title">{this.state.movie.title}</span>
             </div>
             <div className="card-content">
-              <p>{`Subtitle: ${this.state.subtitle}`}</p>
-              <p>{`Storyline: ${this.state.storyline}`}</p>
-              <p>{`Genre: ${this.state.genre}`}</p>
-              <p>{`Rating: ${this.state.rating}`}</p>
+              <p>{`Subtitle: ${this.state.movie.subtitle}`}</p>
+              <p>{`Storyline: ${this.state.movie.storyline}`}</p>
+              <p>{`Genre: ${this.state.movie.genre}`}</p>
+              <p>{`Rating: ${this.state.movie.rating}`}</p>
             </div>
             <div className="card-action">
               <Link to={`/movies/${this.props.match.params.id}/edit`}>
                 EDITAR
               </Link>
               <Link to="/">VOLTAR</Link>
+              <Link onClick={() => this.deletingMovie(this.props.match.params.id)}>DELETAR</Link>
             </div>
           </div>
         </div>
