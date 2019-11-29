@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -24,7 +25,14 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     if (this.state.loading) return <Loading />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const {
+      title,
+      storyline,
+      imagePath,
+      genre,
+      rating,
+      subtitle,
+    } = this.state.movie;
 
     return (
       <div className="row">
@@ -52,3 +60,7 @@ class MovieDetails extends Component {
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: PropTypes.object.isRequired,
+};
