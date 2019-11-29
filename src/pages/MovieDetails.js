@@ -23,12 +23,11 @@ class MovieDetails extends Component {
 
   render() {
     const { movie, loading } = this.state;
-    console.log(movie);
-    console.log(this.props);
     // Change the condition to check the state
     if (loading) return <Loading />;
 
     const {
+      id,
       title,
       storyline,
       imagePath,
@@ -52,7 +51,7 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
-              <Link to={`/movies/${this.props.match.params.id}/edit`}>Editar</Link>
+              <Link to={`/movies/${id}/edit`}>Editar</Link>
               <Link to="/">Voltar</Link>
             </div>
           </div>
