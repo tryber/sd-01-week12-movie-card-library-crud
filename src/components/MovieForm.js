@@ -128,7 +128,7 @@ class MovieForm extends React.Component {
             step={0.1}
             min={0}
             max={5}
-            value={rating}
+            value={rating || ''}
             onChange={(event) => this.updateMovie('rating', event.target.value)}
           />
           <label className="active" htmlFor="movie_rating">Avaliação</label>

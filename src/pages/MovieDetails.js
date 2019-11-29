@@ -65,10 +65,11 @@ function FormComponent(props) {
   const {
     title, storyline, imagePath, genre, rating, subtitle,
   } = movie;
+
   return (
-    <>
+    <div>
       <div className="card-image">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
+        <img alt="Movie Cover" src={imagePath.search('http') !== -1 ? `${imagePath}` : `../${imagePath}`} />
         <span className="card-title">{title}</span>
       </div>
       <div className="card-content">
@@ -77,7 +78,7 @@ function FormComponent(props) {
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -91,14 +92,26 @@ MovieDetails.propTypes = {
   }).isRequired,
 };
 
+FormComponent.defaultTypes = {
+  movie: {
+    title: '',
+    subtitle: '',
+    storyline: '',
+    imagePath: '',
+    genre: '',
+    rating: '',
+    id: 0,
+  },
+};
+
 FormComponent.propTypes = {
   movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
-    storyline: PropTypes.string.isRequired,
-    imagePath: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    id: PropTypes.number.isRequired,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+    genre: PropTypes.string,
+    rating: PropTypes.any,
+    id: PropTypes.number,
   }).isRequired,
 };
