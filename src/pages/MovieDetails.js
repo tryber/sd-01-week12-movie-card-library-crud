@@ -69,5 +69,5 @@ MovieDetails.propTypes = {
     params: {
       id: PropTypes.number,
     },
-  }).isRequire
+  }).isRequired,
 };
