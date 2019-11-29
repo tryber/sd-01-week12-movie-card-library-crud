@@ -1,31 +1,41 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-
 
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie:[],
+      movie: [],
+      redirect: false,
     };
+    this.byebyeMovie = this.byebyeMovie.bind(this);
   }
 
   componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
     movieAPI.getMovie(id)
-      .then((movie) => this.setState({ movie: movie }));
+      .then((movie) => this.setState({ movie }));
+  }
+
+  byebyeMovie() {
+    const { match } = this.props;
+    const { id } = match.params;
+    movieAPI.deleteMovie(id)
+      .then(this.setState({ redirect: true }));
   }
 
   render() {
-    const { movie } = this.state;
+    const { movie, redirect } = this.state;
     const { match } = this.props;
     const { id } = match.params;
-    // Change the condition to check the state
+
     if (movie.length === 0) return <Loading />;
 
+    if (redirect) return <Redirect to="/" />;
     const {
       title, storyline, imagePath, genre, rating, subtitle,
     } = movie;
@@ -51,6 +61,14 @@ class MovieDetails extends Component {
               <Link to="/">
                 VOLTAR
               </Link>
+              <Link
+                to={{
+                  state: { movie },
+                }}
+                onClick={this.byebyeMovie}
+              >
+                DELETAR CARTÃO
+              </Link>
             </div>
           </div>
         </div>
@@ -60,3 +78,11 @@ class MovieDetails extends Component {
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
