@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { MovieForm, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
+import PropTypes from 'prop-types';
 
 class EditMovie extends Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class EditMovie extends Component {
   }
 
   render() {
+    console.log(this.props);
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
       return <Redirect to="/" />;
@@ -47,3 +49,7 @@ class EditMovie extends Component {
 }
 
 export default EditMovie;
+
+EditMovie.propTypes = {
+  match: PropTypes.object.isRequired,
+};
