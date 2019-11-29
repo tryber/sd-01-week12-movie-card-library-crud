@@ -23,7 +23,6 @@ class MovieDetails extends Component {
   }
   render() {
     if (this.state.loading) return <Loading />;
-   
     return (
       <div className="row">
         <div className="col s12 m7">
