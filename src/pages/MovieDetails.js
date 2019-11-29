@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import * as movieAPI from "../services/movieAPI";
-import { Loading } from "../components";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import * as movieAPI from '../services/movieAPI';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
-      movie: []
+      movie: [],
     };
   }
 
   componentDidMount() {
-    movieAPI.getMovie(this.props.match.params.id).then(data => {
+    movieAPI.getMovie(this.props.match.params.id).then((data) => {
       this.setState({
         loading: false,
-        movie: data
+        movie: data,
       });
     });
   }
@@ -30,7 +30,7 @@ class MovieDetails extends Component {
       imagePath,
       genre,
       rating,
-      subtitle
+      subtitle,
     } = this.state.movie;
 
     return (
