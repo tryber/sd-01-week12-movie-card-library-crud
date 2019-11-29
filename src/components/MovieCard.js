@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class MovieCard extends React.Component {
   render() {
@@ -17,6 +18,9 @@ class MovieCard extends React.Component {
             </div>
             <div className="card-action">
             </div>
+            <nav>
+              <Link to={`/movies/${movie.id}`}>VER DETALHES</Link>
+            </nav>
           </div>
         </div>
       </div>
