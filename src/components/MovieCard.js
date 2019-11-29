@@ -1,10 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class MovieCard extends React.Component {
   render() {
     const { movie } = this.props;
-    const { title, storyline, imagePath } = movie;
+    const {
+      title,
+      storyline,
+      imagePath,
+      id,
+    } = movie;
+
     return (
       <div className="row">
         <div className="col s12 m7">
@@ -17,7 +24,7 @@ class MovieCard extends React.Component {
               <p>{storyline}</p>
             </div>
             <div className="card-action">
-              <Link to={`/movies/${movies.id}`}>
+              <Link to={`/movies/${id}`}>
                 Detalhes
               </Link>
             </div>
@@ -29,3 +36,13 @@ class MovieCard extends React.Component {
 }
 
 export default MovieCard;
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+    rating: PropTypes.number,
+  }).isRequired,
+};
