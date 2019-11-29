@@ -170,7 +170,6 @@ body {
 	100% {
 		opacity: 1;
   }
-  
 }
 
 @keyframes swag1 {
@@ -191,7 +190,6 @@ body {
 		top: 20px;
 		width: 8px;
   }
-  
 }
 
 @keyframes swag1-out {
@@ -212,7 +210,6 @@ body {
 		top: 50px;
 		width: 8px;
   }
-  
 }
 
 @keyframes swag2 {
@@ -233,7 +230,6 @@ body {
 		top: 20px;
 		width: 8px;
   }
-  
 }
 
 @keyframes swag2-out {
@@ -254,7 +250,6 @@ body {
 		top: 50px;
 		width: 8px;
   }
-  
 }
 
 @keyframes swag3 {
@@ -275,7 +270,6 @@ body {
 		opacity: 1;
 		width: 8px;
   }
-  
 }
 
 @keyframes swag3-out {
@@ -296,7 +290,6 @@ body {
 		opacity: 0;
 		width: 8px;
   }
-  
 }
 
 @keyframes swag4 {
@@ -317,7 +310,6 @@ body {
 		right: 20px;
 		width: 8px;
   }
-  
 }
 
 @keyframes swag4-out {
@@ -338,5 +330,4 @@ body {
 		right: 50px;
 		width: 8px;
   }
-  
 }
