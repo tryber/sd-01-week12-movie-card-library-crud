@@ -27,16 +27,7 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     if (loading) return <Loading />;
 
-    const {
-      id,
-      title,
-      storyline,
-      imagePath,
-      genre,
-      rating,
-      subtitle,
-    } = movie;
-
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
       <div className="row">
         <div className="col s12 m7">
