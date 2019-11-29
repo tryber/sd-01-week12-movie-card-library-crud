@@ -1,14 +1,39 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import PropTypes from 'prop-types';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    if (true) return <Loading />;
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      movie: [],
+    };
+  }
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+  componentDidMount() {
+    movieAPI.getMovies().then((infoMovie) => {
+      console.log(infoMovie);
+      this.setState({
+        loading: false,
+        movie: infoMovie,
+      });
+    });
+  }
+
+  render() {
+    if (this.state.loading) return <Loading />;
+
+    const {
+      title,
+      storyline,
+      imagePath,
+      genre,
+      rating,
+      subtitle,
+    } = this.state.movie;
 
     return (
       <div className="row">
