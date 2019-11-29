@@ -43,8 +43,9 @@ class MovieDetails extends Component {
                 EDITAR
               </Link>
               <Link to="/">VOLTAR</Link>
-              <Link to ="/" 
-              onClick={() => movieAPI.deleteMovie(this.props.match.params.id)}>DELETAR</Link>
+              <Link to="/" onClick={() => movieAPI.deleteMovie(this.props.match.params.id)}>
+                DELETAR
+              </Link>
             </div>
           </div>
         </div>
