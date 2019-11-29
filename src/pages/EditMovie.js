@@ -33,6 +33,7 @@ class EditMovie extends Component {
   }
 
   render() {
+    console.log('edit');
     console.log(this.props);
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
