@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import MovieData from '../services/movieData';
 
 class MovieCard extends React.Component {
   render() {
-    const { movie } = this.props;
+    const { movie } = this.props.movies;
     const { title, storyline, imagePath } = movie;
     return (
       <div className="row">
@@ -16,6 +18,9 @@ class MovieCard extends React.Component {
               <p>{storyline}</p>
             </div>
             <div className="card-action">
+              <Link to={`/movies/${movie.id}`}>
+                Detalhes
+              </Link>
             </div>
           </div>
         </div>
