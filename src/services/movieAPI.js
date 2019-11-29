@@ -52,7 +52,7 @@ export const createMovie = (movieData) => {
 
 export const deleteMovie = (movieId) => {
   let movies = readMovies();
-  movies = movies.find((movie) => movie.id !== parseInt(movieId, 10));
+  movies = movies.filter((movie) => movie.id !== parseInt(movieId, 10));
   saveMovies(movies);
 
   return new Promise((resolve) => {

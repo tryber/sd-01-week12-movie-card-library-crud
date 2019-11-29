@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: [],
+      movie: [],
       loading: true,
     };
   }
@@ -43,8 +43,11 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className='card-action'>
-              <Link to='/movies/:id/edit'> EDITAR </Link>
+              <Link to={`/movies/${this.props.match.params.id}/edit`}> EDITAR </Link>
               <Link to='/'> VOLTAR </Link>
+              <Link to='/' onClick={() => movieAPI.deleteMovie(this.props.match.params.id)}>
+                DELETAR
+              </Link>
             </div>
           </div>
         </div>
@@ -54,3 +57,11 @@ class MovieDetails extends Component {
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: {
+      id: PropTypes.number,
+    },
+  }).isRequired,
+};
