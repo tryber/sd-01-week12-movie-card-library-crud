@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -28,9 +28,11 @@ class MovieForm extends React.Component {
             type="text"
             className="validate"
             value={title}
-            onChange={(event) => this.updateMovie('title', event.target.value)}
+            onChange={event => this.updateMovie("title", event.target.value)}
           />
-          <label className="active" htmlFor="movie_title">Título</label>
+          <label className="active" htmlFor="movie_title">
+            Título
+          </label>
         </div>
       </div>
     );
@@ -48,9 +50,11 @@ class MovieForm extends React.Component {
             type="text"
             className="validate"
             value={subtitle}
-            onChange={(event) => this.updateMovie('subtitle', event.target.value)}
+            onChange={event => this.updateMovie("subtitle", event.target.value)}
           />
-          <label className="active" htmlFor="movie_subtitle">Subtítulo</label>
+          <label className="active" htmlFor="movie_subtitle">
+            Subtítulo
+          </label>
         </div>
       </div>
     );
@@ -68,9 +72,13 @@ class MovieForm extends React.Component {
             type="text"
             className="validate"
             value={imagePath}
-            onChange={(event) => this.updateMovie('imagePath', event.target.value)}
+            onChange={event =>
+              this.updateMovie("imagePath", event.target.value)
+            }
           />
-          <label className="active" htmlFor="movie_image">Imagem</label>
+          <label className="active" htmlFor="movie_image">
+            Imagem
+          </label>
         </div>
       </div>
     );
@@ -86,9 +94,13 @@ class MovieForm extends React.Component {
             id="movie_storyline"
             className="materialize-textarea"
             value={storyline}
-            onChange={(event) => this.updateMovie('storyline', event.target.value)}
+            onChange={event =>
+              this.updateMovie("storyline", event.target.value)
+            }
           />
-          <label className="active" htmlFor="movie_storyline">Sinopse</label>
+          <label className="active" htmlFor="movie_storyline">
+            Sinopse
+          </label>
         </div>
       </div>
     );
@@ -103,7 +115,7 @@ class MovieForm extends React.Component {
         <select
           className="browser-default"
           value={genre}
-          onChange={(event) => this.updateMovie('genre', event.target.value)}
+          onChange={event => this.updateMovie("genre", event.target.value)}
         >
           <option value="action">Ação</option>
           <option value="comedy">Comédia</option>
@@ -128,9 +140,11 @@ class MovieForm extends React.Component {
             min={0}
             max={5}
             value={rating}
-            onChange={(event) => this.updateMovie('rating', event.target.value)}
+            onChange={event => this.updateMovie("rating", event.target.value)}
           />
-          <label className="active" htmlFor="movie_rating">Avaliação</label>
+          <label className="active" htmlFor="movie_rating">
+            Avaliação
+          </label>
         </div>
       </div>
     );
@@ -168,5 +182,29 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.defaultProps = {
+  movie: {
+    title: "",
+    storyline: "",
+    imagePath: "",
+    rating: 0,
+    subtitle: ""
+  }
+};
+
+MovieForm.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+    rating: PropTypes.number,
+    subtitle: PropTypes.string
+  })
+};
+
+MovieForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+};
 
 export default MovieForm;

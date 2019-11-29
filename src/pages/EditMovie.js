@@ -30,15 +30,23 @@ class EditMovie extends Component {
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
-     return <Redirect to ="/" />
+      return <Redirect to="/" />;
     }
 
     if (status === "loading") {
-      return <Loading />
+      return <Loading />;
     }
 
     return <MovieForm movie={movie} onSubmit={this.handleSubmit} />;
   }
 }
+
+EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: {
+      id: PropTypes.number
+    }
+  }).isRequired
+};
 
 export default EditMovie;
