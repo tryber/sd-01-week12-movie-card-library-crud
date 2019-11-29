@@ -11,6 +11,7 @@ export const getMovies = () => (
   })
 );
 
+
 export const getMovie = (movieId) => {
   const movie = readMovies().find((mov) => mov.id === parseInt(movieId, 10));
 
