@@ -36,45 +36,48 @@ class MovieDetails extends Component {
     if (movie.length === 0) return <Loading />;
 
     if (redirect) return <Redirect to="/" />;
-    const {
-      title, storyline, imagePath, genre, rating, subtitle,
-    } = movie;
 
     return (
       <div className="row">
         <div className="col s12 m7">
-          <div className="card">
-            <div className="card-image">
-              <img alt="Movie Cover" src={`../${imagePath}`} />
-              <span className="card-title">{title}</span>
-            </div>
-            <div className="card-content">
-              <p>{`Subtitle: ${subtitle}`}</p>
-              <p>{`Storyline: ${storyline}`}</p>
-              <p>{`Genre: ${genre}`}</p>
-              <p>{`Rating: ${rating}`}</p>
-            </div>
-            <div className="card-action">
-              <Link to={`/movies/${id}/edit`}>
-                EDITAR
-              </Link>
-              <Link to="/">
-                VOLTAR
-              </Link>
-              <Link
-                to={{
-                  state: { movie },
-                }}
-                onClick={this.byebyeMovie}
-              >
-                DELETAR CARTÃO
-              </Link>
-            </div>
+          <div className="card" />
+          <FormComponent movie={movie} id={id} />
+          <div className="card-action">
+            <Link to={`/movies/${id}/edit`}>
+            EDITAR
+            </Link>
+            <Link to="/">
+            VOLTAR
+            </Link>
+            <Link to={{ state: { movie } }} onClick={this.byebyeMovie}>
+            DELETAR CARTÃO
+            </Link>
           </div>
         </div>
       </div>
     );
   }
+}
+
+function FormComponent(props) {
+  const { movie } = props;
+  const {
+    title, storyline, imagePath, genre, rating, subtitle,
+  } = movie;
+  return (
+    <>
+      <div className="card-image">
+        <img alt="Movie Cover" src={`../${imagePath}`} />
+        <span className="card-title">{title}</span>
+      </div>
+      <div className="card-content">
+        <p>{`Subtitle: ${subtitle}`}</p>
+        <p>{`Storyline: ${storyline}`}</p>
+        <p>{`Genre: ${genre}`}</p>
+        <p>{`Rating: ${rating}`}</p>
+      </div>
+    </>
+  );
 }
 
 export default MovieDetails;
@@ -84,5 +87,17 @@ MovieDetails.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }).isRequired,
+  }).isRequired,
+};
+
+FormComponent.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    storyline: PropTypes.string.isRequired,
+    imagePath: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
 };
