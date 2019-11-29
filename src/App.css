@@ -10,8 +10,8 @@ body {
 }
 
 .movie-list-page {
-  text-align: center;
   margin-top: 2em;
+  text-align: center;
 }
 
 .movie-card {
