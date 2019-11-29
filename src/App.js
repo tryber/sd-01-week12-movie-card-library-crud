@@ -1,9 +1,20 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 
 function App() {
   return (
-    <div>Movie Card Library CRUD</div>
+    <div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={} />
+          <Route exact path="/" component={} />
+          <Route exact path="/" component={} />
+          <Route exact path="/" component={} />
+        </Switch>
+      </BrowserRouter>
+    </div>
   );
 }
 
