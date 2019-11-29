@@ -35,7 +35,7 @@ body {
   color: rgb(233, 8, 8);
   display: flex;
   flex-direction: column;
-  font-family: Verdana, Tahoma, sans-serif;
+  font-family: sans-serif;
   font-style: oblique;
   font-weight: 900;
   text-shadow: 12px 12px 14px #a5a5a5;
@@ -49,9 +49,9 @@ body {
 
 .movie-card {
   background-image: url('http://1.bp.blogspot.com/-zY8GWz0AUyY/VfQp4WshXPI/AAAAAAAAPVc/aBgiMFTFKPc/s1600/imgonline-com-ua-rainbowbackgrCvXRM1AvnZP0.jpg');
+  border-color: rgb(95, 81, 81);
   border-style: inset;
   border-width: 7px;
-  border-color: rgb(95, 81, 81);
   padding: 0 20px 20px;
   width: 500px;
 }
