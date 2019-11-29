@@ -9,6 +9,11 @@ body {
   padding: 48px 30px;
 }
 
+.movie-list-page {
+  text-align: center;
+  margin-top: 2em;
+}
+
 .movie-card {
   width: 500px;
 }
