@@ -18,7 +18,7 @@ class MovieList extends Component {
       this.setState({
         movies: data,
         loading: false,
-      })
+      }),
     );
   }
 
@@ -29,15 +29,15 @@ class MovieList extends Component {
     return (
       <div>
         <header>
-          <h1 className='header'>Rotten Tomatoes</h1>
+          <h1 className="header">Rotten Tomatoes</h1>
         </header>
-        <div className='movie-list'>
+        <div className="movie-list">
           {movies.map((movie) => (
             <MovieCard key={movie.title} movie={movie} />
           ))}
         </div>
         <footer>
-          <Link to='/movies/new' className='btn'>
+          <Link to="/movies/new" className="btn">
             ADICIONAR CARTÃO
           </Link>
         </footer>
