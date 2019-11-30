@@ -14,13 +14,13 @@ class NewMovie extends Component {
     movieAPI.createMovie(newMovie).then(
       this.setState({
         shouldRedirect: true,
-      })
+      }),
     );
   }
 
   render() {
     const { teste } = this.state.shouldRedirect;
-    if (teste) return <Redirect to='/' />;
+    if (teste) return <Redirect to="/" />;
     return <MovieForm onSubmit={this.handleSubmit} />;
   }
 }
