@@ -18,7 +18,7 @@ class MovieDetails extends Component {
       this.setState({
         movie: data,
         loading: false,
-      })
+      }),
     );
   }
 
@@ -29,10 +29,10 @@ class MovieDetails extends Component {
     const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
 
     return (
-      <div className='row'>
-        <div className='col s12 m7'>
-          <div className='card'>
-            <div className='card-image'>
+      <div className="row">
+        <div className="col s12 m7">
+          <div className="card">
+            <div className="card-image">
               <img alt='Movie Cover' src={`../${imagePath}`} />
               <span className='card-title'>{title}</span>
             </div>
@@ -44,8 +44,8 @@ class MovieDetails extends Component {
             </div>
             <div className='card-action'>
               <Link to={`/movies/${this.props.match.params.id}/edit`}> EDITAR </Link>
-              <Link to='/'> VOLTAR </Link>
-              <Link to='/' onClick={() => movieAPI.deleteMovie(this.props.match.params.id)}>
+              <Link to="/"> VOLTAR </Link>
+              <Link to="/" onClick={() => movieAPI.deleteMovie(this.props.match.params.id)}>
                 DELETAR
               </Link>
             </div>
