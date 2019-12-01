@@ -1,0 +1,40 @@
+.loading {
+    align-items: center;
+    display: flex;
+    font-size: 60px;
+    height: 100%;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+}
+  
+.dot {
+    color:black;
+    padding-bottom: 20px;
+    font-size: 90px;
+    animation: dotUpDown 1s infinite;
+    opacity: 0;
+}
+
+.dot1 {
+    animation-delay:0;
+}
+
+.dot2 {
+    animation-delay:0.25s;
+}
+
+.dot3 {
+    animation-delay:0.5s;
+}
+
+
+@keyframes dotUpDown {
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+  }
+  

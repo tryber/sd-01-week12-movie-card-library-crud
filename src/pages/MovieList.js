@@ -29,8 +29,8 @@ class MovieList extends Component {
 
     return (
       <div className="movie-list">
-        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
         {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+        <Link className="row card movie-card add-cart" to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
     );
   }
