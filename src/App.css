@@ -26,11 +26,11 @@ body {
 }
 
 .movie-card {
-  width: 500px;
   animation: show 1.5s;
   animation-delay: 0.1s;
   animation-fill-mode: forwards;
   opacity: 0;
+  width: 500px;
 }
 
 .movie-form {
@@ -53,7 +53,7 @@ body {
     opacity: 0;
     transform: translate(250px);
   }
-  
+
   100% {
     opacity: 1;
   }
