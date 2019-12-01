@@ -342,74 +342,74 @@ body {
 
 .loader {
   height: 8em;
-	overflow: hidden;
-	position: relative;
-	width: 16em;
+  overflow: hidden;
+  position: relative;
+  width: 16em;
 }
 
 .loader::before,
 .loader::after {
-	bottom: 0;
-	content: '';
-	position: absolute;
+  bottom: 0;
+  content: '';
+  position: absolute;
 }
 
 .loader::before {
-	background-color: hsla(0, 0%, 85%);
-	height: 0.2em;
-	width: inherit;
+  background-color: white;
+  height: 0.2em;
+  width: inherit;
 }
 
 .loader::after {
-	border: 0.2em solid hsla(0, 0%, 85%);
-	border-radius: 50%;
-	box-sizing: border-box;
-	height: inherit;
-	left: 25%;
-	width: 50%;
+  border: 0.2em solid white;
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: inherit;
+  left: 25%;
+  width: 50%;
 }
 
 .loader span {
-	animation: 2s linear infinite;
-	animation-name: run, rotating;
-	background-color: white;
-	border-radius: 50%;
-	bottom: 0.2em;
-	height: 10%;
-	left: -5%;
-	position: absolute;
-	transform-origin: 50% -3em;
-	width: 5%;
+  animation: 2s linear infinite;
+  animation-name: run, rotating;
+  background-color: #f3cf14;
+  border-radius: 50%;
+  bottom: 0.2em;
+  height: 10%;
+  left: -5%;
+  position: absolute;
+  transform-origin: 50% -3em;
+  width: 5%;
 }
 
 .loader span:nth-child(2) {
-	animation-delay: 0.075s;
+  animation-delay: 0.075s;
 }
 
 .loader span:nth-child(3) {
-	animation-delay: 0.15s;
+  animation-delay: 0.15s;
 }
 
 @keyframes run {
-	0% {
-		left: -5%;
+  0% {
+    left: -5%;
   }
   
-	10%, 60% {
-		left: calc((100% - 5%) / 2);
+  10%, 60% {
+    left: calc((100% - 5%) / 2);
   }
   
-	70%, 100% {
-		left: 100%;
-	}
+  70%, 100% {
+    left: 100%;
+  }
 }
 
 @keyframes rotating {
-	0%, 10% {
-		transform: rotate(0deg);
+  0%, 10% {
+    transform: rotate(0deg);
   }
   
-	60%, 100% {
-		transform: rotate(-1turn);
-	}
+  60%, 100% {
+    transform: rotate(-1turn);
+  }
 }
