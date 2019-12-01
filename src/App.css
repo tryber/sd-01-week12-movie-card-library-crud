@@ -347,20 +347,20 @@ body {
   width: 16em;
 }
 
-.loader::before,
-.loader::after {
+.loader:before , 
+.loader:after {
   bottom: 0;
   content: '';
   position: absolute;
 }
 
-.loader::before {
+.loader:before {
   background-color: white;
   height: 0.2em;
   width: inherit;
 }
 
-.loader::after {
+.loader:after {
   border: 0.2em solid white;
   border-radius: 50%;
   box-sizing: border-box;
@@ -371,7 +371,7 @@ body {
 
 .loader span {
   animation: 2s linear infinite;
-  animation-name: run, rotating;
+  animation-name: run , rotating;
   background-color: #f3cf14;
   border-radius: 50%;
   bottom: 0.2em;
@@ -382,34 +382,36 @@ body {
   width: 5%;
 }
 
-.loader span:nth-child(2) {
-  animation-delay: 0.075s;
+.loader span:nth-child( 2 ) {
+  animation-delay: 0.1s;
 }
 
-.loader span:nth-child(3) {
+.loader span:nth-child( 3 ) {
   animation-delay: 0.15s;
 }
 
 @keyframes run {
+
   0% {
     left: -5%;
   }
-  
-  10%, 60% {
+
+  10% , 60% {
     left: calc((100% - 5%) / 2);
   }
-  
-  70%, 100% {
+
+  70% , 100% {
     left: 100%;
   }
 }
 
 @keyframes rotating {
-  0%, 10% {
+
+  0% , 10% {
     transform: rotate(0deg);
   }
-  
-  60%, 100% {
+
+  60% , 100% {
     transform: rotate(-1turn);
   }
 }
