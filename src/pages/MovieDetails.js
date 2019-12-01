@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import PropTypes from 'prop-types';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -51,8 +51,11 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
-              <Link exact path={`/movies/${id}/edit`}>
+              <Link to={`/movies/${id}/edit`}>
                 Edit
+              </Link>
+              <Link to="/">
+                  Back
               </Link>
             </div>
           </div>
@@ -62,17 +65,12 @@ class MovieDetails extends Component {
   }
 }
 
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: {
+      id: PropTypes.number,
+    },
+  }).isRequired,
+};
+
 export default MovieDetails;
-
-// MovieDetails.propTypes = {
-//   infomovie: PropTypes.shape({
-//     id: PropTypes.number,
-//     title: PropTypes.string,
-//     storyline: PropTypes.string,
-//     imagePath,
-//     genre,
-//     rating,
-//     subtitle,
-
-//   })
-// }
