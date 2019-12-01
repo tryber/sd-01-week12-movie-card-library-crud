@@ -347,8 +347,7 @@ body {
   width: 16em;
 }
 
-.loader:before , 
-.loader:after {
+.loader:before , .loader:after {
   bottom: 0;
   content: '';
   position: absolute;
@@ -387,7 +386,7 @@ body {
 }
 
 .loader span:nth-child( 3 ) {
-  animation-delay: 0.15s;
+  animation-delay: 0.2s;
 }
 
 @keyframes run {
