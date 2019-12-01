@@ -14,7 +14,7 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    movieAPI.getMovies().then((infoMovie) => {
+    movieAPI.getMovie(this.props.match.params.id).then((infoMovie) => {
       console.log(infoMovie);
       this.setState({
         loading: false,
@@ -33,7 +33,8 @@ class MovieDetails extends Component {
       genre,
       rating,
       subtitle,
-    } = this.state.movie;
+      id,
+    } = this.state.movie
 
     return (
       <div className="row">
@@ -50,6 +51,9 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
+              <Link exact path={`/movies/${id}/edit`}>
+                Edit
+              </Link>
             </div>
           </div>
         </div>
@@ -59,3 +63,16 @@ class MovieDetails extends Component {
 }
 
 export default MovieDetails;
+
+// MovieDetails.propTypes = {
+//   infomovie: PropTypes.shape({
+//     id: PropTypes.number,
+//     title: PropTypes.string,
+//     storyline: PropTypes.string,
+//     imagePath,
+//     genre,
+//     rating,
+//     subtitle,
+
+//   })
+// }
