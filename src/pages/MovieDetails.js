@@ -1,24 +1,24 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import * as movieAPI from "../services/movieAPI";
-import { Loading } from "../components";
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import * as movieAPI from '../services/movieAPI';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
       movies: [],
-      loading: true
+      loading: true,
     };
   }
 
   componentDidMount() {
-    movieAPI.getMovie(this.props.match.params.id).then(data => {
+    movieAPI.getMovie(this.props.match.params.id).then((data) => {
       this.setState({
         loading: false,
-        movie: data
+        movie: data,
       });
     });
   }
@@ -55,9 +55,9 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: {
-      id: PropTypes.number
-    }
-  }).isRequired
+      id: PropTypes.number,
+    },
+  }).isRequired,
 };
 
 export default MovieDetails;
