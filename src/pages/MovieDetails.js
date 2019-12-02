@@ -15,12 +15,9 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    const browserRequest = this.props.match;
+    const pat = this.props.match;
     movieAPI.getMovies()
-      .then((movies) => this.setState({
-        movie: movies.find((movie) => movie.id === Number(browserRequest.url.charAt(browserRequest.url.length - 1))), 
-        loading: false,
-      }));
+      .then((d) => this.setState({ movie: d.find((m) => m.id === Number(pat.url.charAt(pat.url.length - 1))), loading: false }));
   }
 
 
