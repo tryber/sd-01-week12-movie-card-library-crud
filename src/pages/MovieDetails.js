@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
+import './Rating.css';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -12,6 +13,8 @@ class MovieDetails extends Component {
       movie: '',
       loading: true,
     };
+
+    this.createRating = this.createRating.bind(this);
   }
 
   componentDidMount() {
@@ -22,9 +25,24 @@ class MovieDetails extends Component {
       }));
   }
 
+  createRating() {
+    const { movie } = this.state;
+    const { rating } = movie;
+    const porcRating = ((rating / 5) * 100);
+    return (
+      <div className="size-rating">
+        <div className="bar-rating">
+          <div className="bar-rating-child" style={{ width: `${porcRating}%` }} />
+        </div>
+        <div className="text-rating">
+          {`${porcRating}%`}
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const { movie, loading } = this.state;
-    // Change the condition to check the state
     if (loading) return <Loading />;
 
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
@@ -40,7 +58,10 @@ class MovieDetails extends Component {
               <p>{`Subtitle: ${subtitle}`}</p>
               <p>{`Storyline: ${storyline}`}</p>
               <p>{`Genre: ${genre}`}</p>
-              <p>{`Rating: ${rating}`}</p>
+              <p>
+                {`Rating: ${rating}`}
+                {this.createRating()}
+              </p>
             </div>
             <div className="card-action">
               <Link to={`/movies/${id}/edit`}>Editar</Link>
