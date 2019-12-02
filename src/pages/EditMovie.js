@@ -49,7 +49,7 @@ class EditMovie extends Component {
 
 export default EditMovie;
 
-MovieDetails.propTypes = {
+EditMovie.propTypes = {
   match: PropTypes.shape({
     isExact: PropTypes.bool,
     path: PropTypes.string,
