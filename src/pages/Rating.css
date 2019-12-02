@@ -6,13 +6,13 @@
   margin: 10px 0;
   width: 100%;
 }
-  
+
 .bar-rating-child {
   background: orange;
   border-radius: 15px;
   height: 100%;
 }
-  
+
 .rating {
   border-radius: 100%;
   font-size: 30px;
@@ -21,7 +21,7 @@
   text-align: center;
   width: 40px;
 }
-  
+
 .size-rating {
   align-items: center;
   display: flex;
