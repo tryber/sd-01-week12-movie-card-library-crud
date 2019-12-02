@@ -27,14 +27,8 @@ class MovieDetails extends Component {
     if (this.state.loading) return <Loading />;
 
     const {
-      title,
-      storyline,
-      imagePath,
-      genre,
-      rating,
-      subtitle,
-      id,
-    } = this.state.movie
+      title, storyline, imagePath, genre, rating, subtitle,
+    } = this.state.movie;
 
     return (
       <div className="row">
@@ -51,12 +45,8 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
-              <Link to={`/movies/${this.props.match.params.id}/edit`}>
-                Edit
-              </Link>
-              <Link to="/">
-                Back
-              </Link>
+              <Link to={`/movies/${this.props.match.params.id}/edit`}>Edit</Link>
+              <Link to="/">Back</Link>
               <Link to="/" onClick={() => movieAPI.deleteMovie(this.props.match.params.id)}>
                 Delete
               </Link>

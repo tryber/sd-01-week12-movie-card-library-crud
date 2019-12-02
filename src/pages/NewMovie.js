@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
-import { logicalExpression } from '@babel/types';
 import { Loading } from '../components';
 
 class NewMovie extends Component {
@@ -9,7 +8,6 @@ class NewMovie extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      movies: [],
       redirect: false,
     };
   }
