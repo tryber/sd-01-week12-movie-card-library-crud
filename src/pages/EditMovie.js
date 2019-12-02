@@ -31,7 +31,7 @@ class EditMovie extends Component {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
       return (
-      <Redirect to='/' />
+        <Redirect to="/" />
       );
     }
 
