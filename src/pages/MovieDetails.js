@@ -22,7 +22,7 @@ class MovieDetails extends Component {
         movie: data
           .find((movie) => movie.id === Number(pat.url
             .charAt(pat.url.length - 1))),
-        loading: false
+        loading: false,
       }));
   }
 

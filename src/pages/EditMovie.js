@@ -23,7 +23,7 @@ class EditMovie extends Component {
         movie: data
           .find((movie) => movie.id === Number(browserRequest.url
             .charAt(browserRequest.url.length - 6))),
-        status: false
+        status: false,
       }));
   }
 
