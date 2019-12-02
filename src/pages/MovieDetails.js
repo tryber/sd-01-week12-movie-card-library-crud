@@ -7,17 +7,22 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: "",
+      movie: '',
       loading: true,
-    }
+    };
   }
 
   componentDidMount() {
-    movieAPI.getMovie(this.props.match.params.id).then((dados) => this.setState({ movie: dados, loading: false }));
+    console.log(this.props.match.params)
+    const { match } = this.props;
+    console.log(match)
+    const { id } = match.params;
+    console.log(id)
+    movieAPI.getMovie(id).then((dados) => this.setState({ movie: dados, loading: false }));
   }
   
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     // Change the condition to check the state
     const { movie, loading } = this.state;
 
@@ -40,8 +45,8 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
-             <Link to={`${id}/edit`}>EDITAR</Link>
-              <Link >VOLTAR</Link>
+              <Link to={`${id}/edit`}>EDITAR</Link>
+              <Link to="/">VOLTAR</Link>
             </div>
           </div>
         </div>
