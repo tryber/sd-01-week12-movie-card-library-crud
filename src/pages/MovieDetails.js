@@ -14,9 +14,10 @@ class MovieDetails extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const dataMovie = await movieAPI.getMovies();
     const browserRequest = this.props.match;
-    movieAPI.getMovies().then((movies) => this.setState({ movie: movies.find((movie) => movie.id === Number(browserRequest.url.charAt(browserRequest.url.length - 1))), loading: false }));
+    this.setState({ movie: dataMovie.find((movie) => movie.id === Number(browserRequest.url.charAt(browserRequest.url.length - 1))), loading: false });
   }
 
 
@@ -53,7 +54,3 @@ class MovieDetails extends Component {
 }
 
 export default MovieDetails;
-
-MovieDetails.propTypes = {
-  match: PropTypes.object.isRequired,
-}
