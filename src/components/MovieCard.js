@@ -40,4 +40,4 @@ MovieCard.propTypes = {
     rating: PropTypes.number,
     subtitle: PropTypes.string,
   }).isRequired,
-}
+};

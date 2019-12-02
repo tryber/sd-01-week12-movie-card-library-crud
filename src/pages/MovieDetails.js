@@ -22,9 +22,7 @@ class MovieDetails extends Component {
 
   render() {
     if (this.state.loading) {
-      return (
-        <Loading />
-      );
+      return (<Loading />);
     } else {
       const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
       return (
