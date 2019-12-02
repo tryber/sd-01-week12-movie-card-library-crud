@@ -31,8 +31,7 @@ class MovieList extends Component {
           {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
         </div>
       )
-    }
-    // Render Loading here if the request is still happening
+    } 
   }
 }
 
