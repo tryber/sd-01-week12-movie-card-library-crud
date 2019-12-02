@@ -46,3 +46,4 @@ class EditMovie extends Component {
 }
 
 export default EditMovie;
+
