@@ -16,7 +16,9 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    { movieAPI.getMovies().then((movies) => this.setState({ movie: movies.find((movie) => movie.id === Number(this.props.match.url.charAt(this.props.match.url.length - 6))), status: false })) }
+    const dataMovie = await movieAPI.getMovies();
+    const browserRequest = this.props.match;
+    this.setState({ movie: dataMovie.find((movie) => movie.id === Number(browserRequest.url.charAt(browserRequest.url.length - 6))), status: false }));
   }
 
   async handleSubmit(updatedMovie) {
