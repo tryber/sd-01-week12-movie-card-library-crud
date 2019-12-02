@@ -15,7 +15,7 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const dataMovie = await movieAPI.getMovies();
     const browserRequest = this.props.match;
     this.setState({ movie: dataMovie.find((movie) => movie.id === Number(browserRequest.url.charAt(browserRequest.url.length - 6))), status: false }));
