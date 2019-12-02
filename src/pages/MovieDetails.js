@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -15,7 +16,7 @@ class MovieDetails extends Component {
   // movies.find((movie) => movie.id === this.props.match.url.charAt(this.props.match.url.length -1)
 
   componentDidMount() {
-   movieAPI.getMovies().then((movies) => this.setState({movie: movies.find((movie) => movie.id === Number(this.props.match.url.charAt(this.props.match.url.length - 1))), loading: false}))
+    movieAPI.getMovies().then((movies) => this.setState({ movie: movies.find((movie) => movie.id === Number(this.props.match.url.charAt(this.props.match.url.length - 1))), loading: false }))
   }
 
 
@@ -26,7 +27,7 @@ class MovieDetails extends Component {
         <Loading />
       );
     } else {
-      const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+      const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
       return (
         <div className="row">
           <div className="col s12 m7">
@@ -43,6 +44,10 @@ class MovieDetails extends Component {
               </div>
               <div className="card-action">
               </div>
+              <nav className="links-block">
+                <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+                <Link to={`/`}>VOLTAR</Link>
+              </nav>
             </div>
           </div>
         </div>
