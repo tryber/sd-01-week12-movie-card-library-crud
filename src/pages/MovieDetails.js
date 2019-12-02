@@ -18,8 +18,10 @@ class MovieDetails extends Component {
     const pat = this.props.match;
 
     movieAPI.getMovies()
-      .then((d) => this.setState({
-        movie: d.find((m) => m.id === Number(pat.url.charAt(pat.url.length - 1))), 
+      .then((data) => this.setState({
+        movie: data
+          .find((movie) => movie.id === Number(pat.url
+            .charAt(pat.url.length - 1))),
         loading: false
       }));
   }
