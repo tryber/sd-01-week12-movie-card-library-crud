@@ -1,31 +1,42 @@
 import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
+import { Link } from 'react-router-dom';
 
-import * as movieAPI from '../services/movieAPI';
+import MovieCard from '../components/MovieCard';
+import { getMovies } from '../services/movieAPI';
 import Loading from '../components/Loading';
 
 
 class MovieList extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      movie: [],
+    this.state = {
+      movies: [],
       loading: true,
-     };
+    };
   }
 
-  componentDidMount(){
-    movieAPI.getMovies()
-    .then((data) => this.setState({movie: data, loading: false}))
+  componentDidMount() {
+    getMovies().then((data) => {
+      this.setState({
+        loading: false,
+        movies: data,
+      });
+    });
   }
 
   render() {
-    const { movies } = this.state;
-    // Render Loading here if the request is still happening
-
+    const { movies, loading } = this.state;
+    if (loading) return <Loading />;
     return (
       <div className="movie-list">
-        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+        <div className="movie-list-page">
+          <Link className="btn" to="/movies/new">ADICIONAR CARTÃO</Link>
+        </div>
+        <div className="movie-list">
+          {movies.map((movie) => (
+            <MovieCard key={movie.title} movie={movie} />
+          ))}
+        </div>
       </div>
     );
   }
