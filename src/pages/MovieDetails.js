@@ -11,13 +11,16 @@ class MovieDetails extends Component {
     this.state = {
       movie: [],
       loading: true,
-    }
+    };
   }
 
-  async componentDidMount() {
-    const dataMovie = await movieAPI.getMovies();
+  componentDidMount() {
     const browserRequest = this.props.match;
-    this.setState({ movie: dataMovie.find((movie) => movie.id === Number(browserRequest.url.charAt(browserRequest.url.length - 1))), loading: false });
+    movieAPI.getMovies()
+      .then((movies) => this.setState({
+        movie: movies.find((movie) => movie.id === Number(browserRequest.url.charAt(browserRequest.url.length - 1))), 
+        loading: false,
+      }));
   }
 
 
