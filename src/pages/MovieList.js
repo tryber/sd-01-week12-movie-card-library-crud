@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
+import SearchBar from '../components/SearchBar';
 import * as movieAPI from '../services/movieAPI';
 import Loading from '../components/Loading';
 
@@ -11,7 +12,11 @@ class MovieList extends Component {
     this.state = {
       movies: [],
       loading: true,
+      searchText: '',
     };
+
+    this.filterList = this.filterList.bind(this);
+    this.changeHandlerSearch = this.changeHandlerSearch.bind(this);
   }
 
   componentDidMount() {
@@ -22,15 +27,38 @@ class MovieList extends Component {
       }));
   }
 
+  changeHandlerSearch(event) {
+    this.setState({ searchText: event.target.value });
+  }
+
+  filterList() {
+    const { movies, searchText } = this.state;
+    let arrMovies = movies;
+    if (searchText !== '') {
+      arrMovies = movies.filter((movie) => (
+        movie.title.includes(searchText)
+        || movie.subtitle.includes(searchText)
+        || movie.storyline.includes(searchText)
+      ));
+    }
+    return arrMovies;
+  }
+
   render() {
-    const { movies, loading } = this.state;
+    const { loading, searchText } = this.state;
     // Render Loading here if the request is still happening
     if (loading) return <Loading />;
 
     return (
-      <div className="movie-list">
-        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
-        <Link className="row card movie-card add-cart" to="/movies/new">ADICIONAR CARTÃO</Link>
+      <div>
+        <SearchBar
+          searchText={searchText}
+          onSearchTextChange={(e) => this.changeHandlerSearch(e)}
+        />
+        <div className="movie-list">
+          {this.filterList().map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+          <Link className="row card movie-card add-cart" to="/movies/new">ADICIONAR CARTÃO</Link>
+        </div>
       </div>
     );
   }
