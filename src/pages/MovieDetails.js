@@ -8,22 +8,19 @@ class MovieDetails extends Component {
     super(props);
     this.state = {
       movie: [],
-      loading: true
+      loading: true,
     };
   }
-  
   componentDidMount() {
     movieAPI.getMovies(this.props.match.params.id).then((data) => this.setState({
       movie: data,
-      loading: false
+      loading: false,
     }));
   }
     
   render() {
     if (this.state.loading) return <Loading />;
-    
     const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
-
     return (
       <div className="row">
         <div className="col s12 m7">
@@ -39,7 +36,7 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
-              <Link to={"/"}>Voltar</Link>
+              <Link to={'/'}>Voltar</Link>
             </div>
           </div>
         </div>
