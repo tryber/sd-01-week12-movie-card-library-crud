@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -12,12 +12,12 @@ class MovieDetails extends Component {
     };
   }
   componentDidMount() {
-    movieAPI.getMovies(this.props.match.params.id).then((data) => this.setState({
+    movieAPI.getMovies().then((data) => this.setState({
       movie: data,
       loading: false,
     }));
   }
-    
+
   render() {
     if (this.state.loading) return <Loading />;
     const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
