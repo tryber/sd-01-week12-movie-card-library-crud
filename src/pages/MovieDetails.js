@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
@@ -13,10 +14,9 @@ class MovieDetails extends Component {
     }
   }
 
-  // movies.find((movie) => movie.id === this.props.match.url.charAt(this.props.match.url.length -1)
-
   componentDidMount() {
-    movieAPI.getMovies().then((movies) => this.setState({ movie: movies.find((movie) => movie.id === Number(this.props.match.url.charAt(this.props.match.url.length - 1))), loading: false }))
+    const browserRequest = this.props.match;
+    movieAPI.getMovies().then((movies) => this.setState({ movie: movies.find((movie) => movie.id === Number(browserRequest.url.charAt(browserRequest.url.length - 1))), loading: false }));
   }
 
 
@@ -43,13 +43,17 @@ class MovieDetails extends Component {
             </div>
             <nav className="links-block">
               <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-              <Link to={`/`}>VOLTAR</Link>
+              <Link to="/">VOLTAR</Link>
             </nav>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: PropTypes.object.isRequired,
+}
