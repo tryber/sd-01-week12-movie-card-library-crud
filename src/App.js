@@ -1,6 +1,7 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import newMovie from './pages/NewMovie';
@@ -14,9 +15,7 @@ function App() {
         <Switch>
           <Route path="/movies/new" component={newMovie} />
           <Route path="/movies/:id/edit" component={editMovie} />
-          <Route path="/movies/:id" render={
-            (props) => <MovieDetails {...props} />
-          } />
+          <Route path="/movies/:id" render={(props) => <MovieDetails {...props} />} />
           <Route exact path="/" component={MovieList} />
           <Route path="*" component={notFound} />
         </Switch>
