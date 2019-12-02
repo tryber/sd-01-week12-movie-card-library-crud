@@ -12,11 +12,11 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
+          <Route path="/movies/new" component={newMovie} />
           <Route path="/movies/:id/edit" component={editMovie} />
           <Route path="/movies/:id" render={
             (props) => <MovieDetails {...props} />
           } />
-          <Route path="/movies/new" component={newMovie} />
           <Route exact path="/" component={MovieList} />
           <Route path="*" component={notFound} />
         </Switch>
