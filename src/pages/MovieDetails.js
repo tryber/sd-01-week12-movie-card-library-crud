@@ -51,7 +51,7 @@ class MovieDetails extends Component {
 
 export default MovieDetails;
 
-EditMovie.propTypes = {
+MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: {
       id: PropTypes.number,
