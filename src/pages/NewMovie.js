@@ -20,7 +20,6 @@ class NewMovie extends Component {
     );
   }
 
-
   render() {
     if (this.state.redirect) return <Redirect to="/" />;
     return <MovieForm onSubmit={this.handleSubmit} />;
