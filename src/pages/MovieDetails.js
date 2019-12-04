@@ -11,16 +11,18 @@ class MovieDetails extends Component {
       loading: true,
     };
   }
+
   componentDidMount() {
-    movieAPI.getMovies().then((data) => this.setState({
+    movieAPI.getMovie(this.props.match.params.id).then((data) => this.setState({
       movie: data,
       loading: false,
     }));
   }
 
   render() {
-    if (this.state.loading) return <Loading />;
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const { movie, loading } = this.state;
+    if (loading) return <Loading />;
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
       <div className="row">
         <div className="col s12 m7">
@@ -37,6 +39,7 @@ class MovieDetails extends Component {
             </div>
             <div className="card-action">
               <Link to={'/'}>Voltar</Link>
+              <Link to={`/movies/${id}/edit`}>Editar</Link>
             </div>
           </div>
         </div>
