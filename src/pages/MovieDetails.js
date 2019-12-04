@@ -38,8 +38,8 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
-              <Link to={'/'}>Voltar</Link>
               <Link to={`/movies/${id}/edit`}>Editar</Link>
+              <Link to={'/'}>Voltar</Link>
             </div>
           </div>
         </div>
