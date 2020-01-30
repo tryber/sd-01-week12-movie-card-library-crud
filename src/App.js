@@ -7,7 +7,6 @@ import NewMovie from './pages/NewMovie';
 import NotFound from './pages/NotFound';
 import EditMovie from './pages/EditMovie';
 
-
 function App() {
   return (
     <BrowserRouter>

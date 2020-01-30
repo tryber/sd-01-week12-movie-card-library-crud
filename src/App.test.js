@@ -4,7 +4,7 @@ import App from './App';
 
 afterEach(cleanup);
 
-describe('Movie List', () =>{
+describe('Movie List', () => {
   test("Renders a 'Carregando' text right afte rendering the element", () => {
     const { getByText } = render(<App />);
     expect(getByText('Carregando...')).toBeDefined();
@@ -15,7 +15,7 @@ describe('Movie List', () =>{
 
     await waitForDomChange();
 
+    expect(queryByText('Carregando...')).toBeNull();
     expect(queryByText('Kingsglaive')).not.toBeNull();
-
   });
 });
