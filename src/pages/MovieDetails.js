@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import * as movieAPI from '../services/movieAPI';
-import { Loading } from '../components';
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import * as movieAPI from "../services/movieAPI";
+import { Loading } from "../components";
 
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
       movies: [],
-      loading: true,
+      loading: true
     };
   }
 
   componentDidMount() {
-    movieAPI.getMovie(this.props.match.params.id).then((data) => {
+    movieAPI.getMovie(this.props.match.params.id).then(data => {
       this.setState({
         loading: false,
-        movie: data,
+        movie: data
       });
     });
   }
@@ -39,9 +39,14 @@ class MovieDetails extends Component {
               <p>{`Rating: ${this.state.movie.rating}`}</p>
             </div>
             <div className="card-action">
-              <Link to={`/movies/${this.props.match.params.id}/edit`}>EDITAR</Link>
+              <Link to={`/movies/${this.props.match.params.id}/edit`}>
+                EDITAR
+              </Link>
               <Link to="/">VOLTAR</Link>
-              <Link to="/" onClick={() => movieAPI.deleteMovie(this.props.match.params.id)}>
+              <Link
+                to="/"
+                onClick={() => movieAPI.deleteMovie(this.props.match.params.id)}
+              >
                 DELETAR
               </Link>
             </div>
@@ -55,9 +60,9 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: {
-      id: PropTypes.number,
-    },
-  }).isRequired,
+      id: PropTypes.number
+    }
+  }).isRequired
 };
 
 export default MovieDetails;
