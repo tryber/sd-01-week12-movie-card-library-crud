@@ -1,3 +1,7 @@
+import data from './movieData';
+
+localStorage.setItem('movies', JSON.stringify(data));
+
 const readMovies = () => JSON.parse(localStorage.getItem('movies'));
 
 const saveMovies = (movies) => localStorage.setItem('movies', JSON.stringify(movies));
