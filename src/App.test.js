@@ -1,9 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render, cleanup, waitForDomChange } from '@testing-library/react';
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+afterEach(cleanup);
+
+describe('Movie List', () =>{
+  test("Renders a 'Carregando' text right afte rendering the element", () => {
+    const { getByText } = render(<App />);
+    expect(getByText('Carregando...')).toBeDefined();
+  });
+
+  test('Renders the movie titles after the page loads', async () => {
+    const { queryByText } = render(<App />);
+
+    await waitForDomChange();
+
+    expect(queryByText('Kingsglaive')).not.toBeNull();
+
+  });
 });
