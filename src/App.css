@@ -27,21 +27,25 @@ body {
   position: fixed;
   width: 100%;
 }
+
 .lds-dual-ring:after {
-  content: " ";
-  display: block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border-radius: 50%;
+  animation: lds-dual-ring 1.2s linear infinite;
   border: 6px solid #ffc272;
   border-color: #ffc272 transparent #ffc272 transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
+  border-radius: 50%;
+  content: ' ';
+  display: block;
+  height: 64px;
+  margin: 8px;
+  width: 64px;
 }
+
 @keyframes lds-dual-ring {
+  
   0% {
     transform: rotate(0deg);
   }
+  
   100% {
     transform: rotate(360deg);
   }
@@ -61,32 +65,32 @@ body {
 .div-new-add-movie-button {
   align-items: center;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
   margin: 20px;
 }
 
 .add-new-movie {
-  border: 0.1em solid #ffc272;
+  -webkit-transition: color 0.3s ease;
   background: #ffc272;
+  border: 0.1em solid #ffc272;
   border-radius: 0.12em;
   box-sizing: border-box;
   color: black;
   cursor: pointer;
   display: inline-block;
-  padding: 0.35em 1.2em;
-  margin-bottom: 50px;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   font-weight: 300;
+  margin-bottom: 50px;
+  padding: 0.35em 1.2em;
   text-align: center;
-  -webkit-transition: color .3s ease;
-  transition: color .3s ease;
+  text-decoration: none;
   text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 .add-new-movie:hover {
-  color: #000000;
   background-color: #ffab40;
   border: 0.1em solid #ffab40;
+  color: #000;
 }
