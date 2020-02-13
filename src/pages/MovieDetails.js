@@ -40,7 +40,10 @@ class MovieDetails extends Component {
             </div>
             <div className="card-action">
               <Link to={`/movies/${id}/edit`}>Editar</Link>
-              <Link to={'/'}>Voltar</Link>
+              <Link to="/">Voltar</Link>
+              <Link to="/" onClick={() => movieAPI.deleteMovie(this.props.match.params.id)}>
+                Excluir
+              </Link>
             </div>
           </div>
         </div>
